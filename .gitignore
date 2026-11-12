@@ -10,3 +10,7 @@ wheels/
 .venv
 .env*
 .claude
+
+# OS and tool artifacts
+.DS_Store
+.gradio/

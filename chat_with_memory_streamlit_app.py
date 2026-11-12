@@ -1,6 +1,6 @@
 import streamlit as st
 
-from src.app.google_llm_chat_with_memory import MODEL, chat
+from app.project2.google_llm_chat_with_memory import MODEL, chat
 
 st.set_page_config(page_title="Gemini Chat with Memory", layout="centered")
 

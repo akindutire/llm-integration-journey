@@ -1,4 +1,4 @@
-from src.app.google_llm_chat_with_memory import chat
+from app.project2.google_llm_chat_with_memory import chat
 
 
 def main():

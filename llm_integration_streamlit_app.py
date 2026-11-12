@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-from src.app.google_llm import MODEL, Recipe, get_dish_recipe
+from app.project1.google_llm import MODEL, Recipe, get_dish_recipe
 
 st.set_page_config(page_title="AI Recipe Chef", page_icon="🍲", layout="wide")
 

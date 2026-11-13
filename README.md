@@ -18,7 +18,7 @@ A practice project integrating Google Gemini into a Python application. Given a 
 ## Project Structure
 
 ```
-src/app/google_llm.py             Pydantic schema and Gemini call
+src/app/project1/google_llm.py    Pydantic schema and Gemini call
 llm_integration_streamlit_app.py  Streamlit web interface
 ```
 
@@ -54,7 +54,7 @@ A conversational chat app where Gemini remembers earlier messages in the convers
 ## Project Structure
 
 ```
-src/app/google_llm_chat_with_memory.py  Chat logic, memory and response schema
+src/app/project2/google_llm_chat_with_memory.py  Chat logic, memory and response schema
 chat_with_memory_streamlit_app.py       Streamlit chat interface
 main.py                                 Command-line memory demo
 ```

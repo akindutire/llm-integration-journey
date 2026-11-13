@@ -95,9 +95,16 @@ Given a startup's name, about page url, industry and extra context, a team of ag
 ## Project Structure
 
 ```
-src/app/project3/ayomide_startup_pitch_generator/pitch_generator.py  Agents, schemas, guardrail and pipeline
-src/app/project3/ayomide_startup_pitch_generator/pitch_gen.ipynb     Exploration notebook
-startup_pitch_streamlit_app.py                                       Streamlit interface
+src/app/project3/ayomide_startup_pitch_generator/
+    pitch_gen.py            Pipeline build and orchestration
+    agents.py               Agent instructions and factories (researcher, competitor, CEO, sales rep)
+    tools.py                Function tools: scrape page, save pitch PDF, save cold email
+    structured_outputs.py   Pydantic outputs and the per-run PitchArtifacts context
+    input_guardrails.py     Finance input guardrail
+    output_guardrails.py    Competitor and Dear Investor output guardrails
+    utils.py                Config, model selection, output extractors, rendering
+    pitch_gen.ipynb         Exploration notebook
+startup_pitch_streamlit_app.py  Streamlit interface
 ```
 
 ## Usage

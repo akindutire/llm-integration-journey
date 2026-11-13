@@ -3,13 +3,9 @@ import asyncio
 import pandas as pd
 import streamlit as st
 
-from app.project3.ayomide_startup_pitch_generator.pitch_generator import (
-    LLM_VENDORS,
-    RATING_ACCEPTABLE,
-    PitchArtifacts,
-    missing_api_key,
-    orchestrate,
-)
+from app.project3.ayomide_startup_pitch_generator.pitch_gen import orchestrate
+from app.project3.ayomide_startup_pitch_generator.structured_outputs import PitchArtifacts
+from app.project3.ayomide_startup_pitch_generator.utils import LLM_VENDORS, RATING_ACCEPTABLE, missing_api_key
 
 st.set_page_config(page_title="Startup Pitch Generator", layout="wide")
 

@@ -79,42 +79,31 @@ uv run python main.py
 
 Python, Google Gemini (`google-genai`), Pydantic, Streamlit
 
-# Project 3 - Startup Pitch Generator (Multi-Agent)
+# Project 3 - Startup Pitch Generator
 
-Given a startup's name, about page url, industry and extra context, a team of agents researches the startup, finds its competitors, then writes, evaluates and packages an investor pitch with a cold email.
+A single agent reads a startup's about page and writes an investor pitch in markdown. This is a public demo; the full product is developed privately.
 
 ## What I Practiced
 
-- Multi-agent orchestration with the OpenAI Agents SDK: agents as tools, hand-offs and tracing
-- Vendor-agnostic agents: the vendor (OpenAI or Gemini) and one model for every agent are chosen in the UI; Gemini runs through its OpenAI-compatible endpoint
-- Structured output: every agent returns a Pydantic model (summary, competitors, skeleton, pitch, evaluation)
-- Evaluation loop: an evaluator agent rates the pitch; below 80% the CEO agent rebuilds it once using the feedback
-- Guardrails: a finance input guardrail (LLM check), plus output guardrails checked in code: the pitch must not name a competitor (rejected pitches go back to the CEO to rebuild) and the email must be addressed to Dear Investor
-- Streamlit interface showing progress, the pitch, evaluation scores, research and the cold email, with markdown, PDF and HTML downloads
+- Building an agent with the OpenAI Agents SDK: a function tool that scrapes the about page and a Pydantic structured output for the pitch
+- Vendor-agnostic models: OpenAI, or Gemini through its OpenAI-compatible endpoint, chosen in the UI
+- Streamlit interface with a markdown download
 
 ## Project Structure
 
 ```
-src/app/project3/ayomide_startup_pitch_generator/
-    pitch_gen.py            Pipeline build and orchestration
-    agents.py               Agent instructions and factories (researcher, competitor, CEO, sales rep)
-    tools.py                Function tools: scrape page, save pitch PDF, save cold email
-    structured_outputs.py   Pydantic outputs and the per-run PitchArtifacts context
-    input_guardrails.py     Finance input guardrail
-    output_guardrails.py    Competitor and Dear Investor output guardrails
-    utils.py                Config, model selection, output extractors, rendering
-    pitch_gen.ipynb         Exploration notebook
-startup_pitch_streamlit_app.py  Streamlit interface
+src/app/project3/startup_pitch_lite/pitch_lite.py  Agent, scraping tool and model selection
+startup_pitch_lite_streamlit_app.py                Streamlit interface
 ```
 
 ## Usage
 
-Set `OPENAI_API_KEY` for OpenAI models or `GEMINI_API_KEY` / `GOOGLE_API_KEY` for Gemini in `.env`. Web search for competitors is only available with OpenAI; with Gemini the model lists competitors from its own knowledge.
+Set `OPENAI_API_KEY` for OpenAI models or `GEMINI_API_KEY` for Gemini in `.env`.
 
 ```bash
-uv run streamlit run startup_pitch_streamlit_app.py
+uv run streamlit run startup_pitch_lite_streamlit_app.py
 ```
 
 ## Tech Stack
 
-Python, OpenAI Agents SDK, Pydantic, BeautifulSoup, xhtml2pdf, Streamlit, pandas
+Python, OpenAI Agents SDK, Pydantic, BeautifulSoup, Streamlit
